@@ -3,6 +3,8 @@ package com.diana.taskmanagerForTeams.Domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Users")
 @Getter
@@ -16,6 +18,8 @@ public class User {
     private String username;
     private String password;
     private String role;
-   // private List<Team> teams (muitos-para-muitos)
+
+    @ManyToMany(mappedBy = "users")
+    private List<Team> teams;
 
 }

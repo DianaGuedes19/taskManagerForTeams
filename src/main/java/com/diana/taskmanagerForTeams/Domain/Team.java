@@ -1,9 +1,6 @@
 package com.diana.taskmanagerForTeams.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +20,14 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    //private List<User> users (muitos-para-muitos) ;
-    //private List<Project> projects (um-para-muitos);
+
+    @ManyToMany
+    @JoinTable(name = "team_user",
+            joinColumns = @JoinColumn(name = "team_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> users;
+
+    @OneToMany(mappedBy = "team")
+    private List<Project> projects;
 
 }
