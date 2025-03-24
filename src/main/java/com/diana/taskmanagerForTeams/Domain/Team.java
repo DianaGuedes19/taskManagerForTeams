@@ -21,9 +21,9 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @NotNull
-    @NotEmpty
+    @NotBlank  (message = "Name cannot be empty")
+    @NotNull (message = "Name cannot be null")
+    @NotEmpty (message = "Name cannot be empty")
     @Size(min = 5)
     @Pattern(
             regexp = "^[A-Za-z]+$",
@@ -31,18 +31,15 @@ public class Team {
     )
     private String name;
 
-    @NotBlank
-    @NotNull
-    @NotEmpty
+    @NotNull (message = "User cannot be empty")
     @ManyToMany
     @JoinTable(name = "team_user",
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
 
-    @NotBlank
-    @NotNull
-    @NotEmpty
+
+    @NotNull (message = "Project cannot be empty")
     @OneToMany(mappedBy = "team")
     private List<Project> projects;
 

@@ -13,9 +13,9 @@ public class Task {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotNull (message = "Title cannot be null")
+    @NotBlank (message = "Title cannot be empty")
+    @NotEmpty (message = "Title cannot be empty")
     @Size(min = 4, max = 20)
     @Pattern(
             regexp = "^[A-Za-z]+$",
@@ -23,37 +23,31 @@ public class Task {
     )
     private String title;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotNull (message = "Description cannot be null")
+    @NotBlank (message = "Description cannot be empty")
+    @NotEmpty (message = "Description cannot be empty")
     @Size(min = 15 , max = 150)
     private String description;
 
-    @NotEmpty
-    @NotNull
-    @NotBlank
+
+    @NotNull (message = "Date cannot be null")
+    @FutureOrPresent
     private LocalDate deadline;
 
 
-    @NotEmpty
-    @NotNull
-    @NotBlank
+    @NotNull (message = "Status cannot be null")
     @Enumerated(EnumType.STRING) // Save the value as text and not as number
     @Column(nullable = false) // Make it "obligate" to use
     private Status status;
 
 
-    @NotEmpty
-    @NotNull
-    @NotBlank
+    @NotNull  (message = "User cannot be null")
     @ManyToOne
     @JoinColumn(name = "assigned_user_id")
     private User userAssign;
 
 
-    @NotEmpty
-    @NotNull
-    @NotBlank
+    @NotNull  (message = "Project cannot be null")
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
