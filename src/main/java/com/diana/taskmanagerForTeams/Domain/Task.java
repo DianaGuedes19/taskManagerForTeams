@@ -2,10 +2,7 @@ package com.diana.taskmanagerForTeams.Domain;
 
 import com.diana.taskmanagerForTeams.Domain.Enum.Status;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,6 +17,10 @@ public class Task {
     @NotBlank
     @NotEmpty
     @Size(min = 4, max = 20)
+    @Pattern(
+            regexp = "^[A-Za-z]+$",
+            message = "The Title should only contain letters"
+    )
     private String title;
 
     @NotNull

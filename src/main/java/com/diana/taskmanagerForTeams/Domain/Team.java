@@ -1,10 +1,7 @@
 package com.diana.taskmanagerForTeams.Domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +25,10 @@ public class Team {
     @NotNull
     @NotEmpty
     @Size(min = 5)
+    @Pattern(
+            regexp = "^[A-Za-z]+$",
+            message = "The name should only contain letters"
+    )
     private String name;
 
     @NotBlank
