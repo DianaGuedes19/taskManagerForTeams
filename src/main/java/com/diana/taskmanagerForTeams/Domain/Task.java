@@ -1,13 +1,13 @@
 package com.diana.taskmanagerForTeams.Domain;
 
 import com.diana.taskmanagerForTeams.Domain.Enum.Status;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+@Entity
 public class Task {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -18,6 +18,8 @@ public class Task {
     private Status status;
 
     //User assignedUser (muitos-para-um);
-    //Project project (muitos-para-um);
+
+    @ManyToOne
+    private Project project;
 
 }

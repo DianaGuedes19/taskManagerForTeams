@@ -1,13 +1,12 @@
 package com.diana.taskmanagerForTeams.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,7 +19,11 @@ public class Project {
     private Long id;
     private String name;
     private String description;
-    // private Team team (muitos-para-um);
-    // private List<Task> tasks (um-para-muitos);
+
+    @ManyToOne
+    private Team team;
+
+    @OneToMany(mappedBy = "project") // The mapped by is informing that the other class is responsible for the FK
+    private List<Task> tasks;
 
 }
