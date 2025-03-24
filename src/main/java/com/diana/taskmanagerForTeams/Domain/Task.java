@@ -3,11 +3,19 @@ package com.diana.taskmanagerForTeams.Domain;
 import com.diana.taskmanagerForTeams.Domain.Enum.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Task {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
