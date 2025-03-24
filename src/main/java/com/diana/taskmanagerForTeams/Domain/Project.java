@@ -21,6 +21,7 @@ public class Project {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "team_id")
     private Team team;
 
     @OneToMany(mappedBy = "project") // The mapped by is informing that the other class is responsible for the FK

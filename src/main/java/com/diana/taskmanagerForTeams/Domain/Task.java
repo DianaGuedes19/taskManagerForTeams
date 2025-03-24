@@ -4,6 +4,8 @@ import com.diana.taskmanagerForTeams.Domain.Enum.Status;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 public class Task {
     @Id
@@ -17,9 +19,12 @@ public class Task {
     @Column(nullable = false) // Make it "obligate" to use
     private Status status;
 
-    //User assignedUser (muitos-para-um);
+    @ManyToOne
+    @JoinColumn(name = "assigned_user_id")
+    private User userAssign;
 
     @ManyToOne
+    @JoinColumn(name = "project_id")
     private Project project;
 
 }
