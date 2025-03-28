@@ -9,8 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 public class ProjectsDTO {
@@ -19,6 +18,18 @@ public class ProjectsDTO {
     private String description;
     private Team team;
     private List<Task> tasks;
+
+    public ProjectsDTO(Long id, String name, String description, Team team, List<Task> tasks) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.team = team;
+        this.tasks = tasks;
+    }
+
+    public ProjectsDTO() {
+
+    }
 
     public Long getId() {
         return id;
