@@ -11,35 +11,43 @@ class UserTest {
         //arrange
         Role role = Role.MEMBERFREE;
         //act
-        User user = new User(1L,"DianaGuedes19", "diana123", role);
+        User user = new User(1L, "DianaGuedes19","dianaguedes@gmail.com", "diana123", role);
         // Assert
         assertNotNull(user);
     }
 
     @Test
-    void shouldNotCreateValidUserWithUserNull() throws Exception {
+    void shouldNotCreateValidUserWithUserNull()  {
         //arrange
         Role role = Role.MEMBERFREE;
         //act
         // Assert
-        assertThrows(Exception.class, () -> new User(1L,null, "diana123", role));
+        assertThrows(Exception.class, () -> new User(1L,null, "dianaguedes@gmail.com", "diana123", role));
     }
 
     @Test
-    void shouldNotCreateValidUserWithNullPassword() throws Exception {
+    void shouldNotCreateValidUserWithNullPassword()  {
         //arrange
         Role role = Role.MEMBERFREE;
         //act
         // Assert
-        assertThrows(Exception.class, () -> new User(1L,"DianaGuedes19", null, role));
+        assertThrows(Exception.class, () -> new User(1L,"DianaGuedes19","dianaguedes@gmail.com",  null, role));
     }
 
     @Test
-    void shouldNotCreateValidUserWithNullRole() throws Exception {
+    void shouldNotCreateValidUserWithNullRole()  {
         //arrange
         //act
         // Assert
-        assertThrows(Exception.class, () -> new User(1L,"DianaGuedes19", "diana123", null));
+        assertThrows(Exception.class, () -> new User(1L,"DianaGuedes19","dianaguedes@gmail.com",  "diana123", null));
+    }
+
+    @Test
+    void shouldNotCreateValidUserWithNullEmail()  {
+        //arrange
+        //act
+        // Assert
+        assertThrows(Exception.class, () -> new User(1L,"DianaGuedes19",null,  "diana123", null));
     }
 
     @Test

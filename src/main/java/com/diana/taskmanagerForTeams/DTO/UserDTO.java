@@ -5,12 +5,14 @@ import com.diana.taskmanagerForTeams.Domain.Enum.Role;
 public class UserDTO {
     private Long id;
     private String username;
+    private String email;
     private String password;
     private Role role;
 
-    public UserDTO(Long id, String username, String password, Role role) {
+    public UserDTO(Long id, String username, String email, String password, Role role) {
         this.id = id;
         this.username = username;
+        this.email = email;
         this.password = password;
         this.role = role;
     }
@@ -50,5 +52,13 @@ public class UserDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
