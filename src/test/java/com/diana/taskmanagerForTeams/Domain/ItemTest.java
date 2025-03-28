@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 class ItemTest {
 
     @Test
-    void shouldCreateValidCourse() throws Exception {
+    void shouldCreateValidItem() throws Exception {
         //arrange
         User Diana = mock(User.class);
         //act

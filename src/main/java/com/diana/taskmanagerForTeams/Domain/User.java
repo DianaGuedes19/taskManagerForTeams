@@ -31,7 +31,7 @@ public class User {
     }
 
     public boolean isUserNameInvalid (String username){
-        return username==null || username.isBlank() || username.isEmpty() || username.matches("^.{5,15}$");
+        return username==null || username.isBlank() || username.isEmpty() || username.matches("^[A-Za-z ]+$");
     }
 
     public  boolean isPasswordInvalid (String password){
