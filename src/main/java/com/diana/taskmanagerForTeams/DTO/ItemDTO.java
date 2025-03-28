@@ -10,14 +10,12 @@ import lombok.Setter;
 public class ItemDTO {
     private Long id;
     private String title;
-    private String description;
     private Boolean _purchase;
     private User userAssign;
 
-    public ItemDTO(Long id, String title, String description, Boolean purchase, User userAssign) {
+    public ItemDTO(Long id, String title, Boolean purchase, User userAssign) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this._purchase = purchase;
         this.userAssign = userAssign;
     }
@@ -41,14 +39,6 @@ public class ItemDTO {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Boolean get_purchase() {

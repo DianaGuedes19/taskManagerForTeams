@@ -2,10 +2,13 @@ package com.diana.taskmanagerForTeams.Mapper;
 
 import com.diana.taskmanagerForTeams.DTO.ItemDTO;
 import com.diana.taskmanagerForTeams.Domain.Item;
+import org.hibernate.annotations.Comment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItemMapper {
 
-    public ItemDTO mapToDTO (com.diana.taskmanagerForTeams.Domain.Item item){
+    public static ItemDTO mapToDTO (com.diana.taskmanagerForTeams.Domain.Item item){
         ItemDTO itemDTO = new ItemDTO();
         itemDTO.setId(item.getId());
         itemDTO.setTitle(item.getTitle());
@@ -14,7 +17,7 @@ public class ItemMapper {
         return itemDTO;
     }
 
-    public Item mapToEntity (ItemDTO taskDTO){
+    public static Item mapToEntity (ItemDTO taskDTO){
         Item item = new Item();
         item.setId(taskDTO.getId());
         item.setTitle(taskDTO.getTitle());

@@ -32,7 +32,7 @@ public class Item {
     }
 
     public boolean isTitleInvalid(String title) {
-        return title == null || title.isEmpty() || title.isBlank() || !title.matches("^[A-Za-z ]+$");
+        return title == null || title.isEmpty() || title.isBlank() ;
     }
 
 
