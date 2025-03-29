@@ -72,5 +72,27 @@ class AuthControllerTest {
     }
 
 
+    @Test
+    void shouldLoginSuccessfullyAndReturnToken() throws Exception {
+        // Arrange
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setEmail("diana@example.com");
+        loginDTO.setPassword("diana123");
+
+        AuthResponse response = new AuthResponse("fake-jwt-token");
+
+        when(authService.login(any(LoginDTO.class))).thenReturn(response);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String loginJson = objectMapper.writeValueAsString(loginDTO);
+
+        // Act + Assert
+        mockMvc.perform(post("/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(loginJson))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.token").value("fake-jwt-token"));
+    }
+
 
 }

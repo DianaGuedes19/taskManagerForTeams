@@ -19,6 +19,7 @@ public class SecurityFilterChainClass {
                 .sessionManagement(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register").permitAll()
+                        .requestMatchers("/auth/login").permitAll()
                         .anyRequest().authenticated()
                 );
 
