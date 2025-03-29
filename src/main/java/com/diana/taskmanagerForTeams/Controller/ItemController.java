@@ -20,7 +20,7 @@ public class ItemController {
 
     @PostMapping("/createItem")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ItemDTO> createPlayer (@RequestBody ItemDTO itemDTO){
+    public ResponseEntity<ItemDTO> createItem (@RequestBody ItemDTO itemDTO){
         return new ResponseEntity<>(itemService.createItem(itemDTO), HttpStatus.CREATED);
     }
 
