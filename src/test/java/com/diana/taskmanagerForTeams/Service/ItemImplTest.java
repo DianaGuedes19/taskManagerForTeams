@@ -122,11 +122,11 @@ class ItemImplTest {
         User user = new User();
         Item item1 = new Item(1L, "Leite", true, user);
         List<Item> items = List.of(item1);
-        when(itemRepository.findByUser(user)).thenReturn(items);
+        when(itemRepository.findByUserAssign(user)).thenReturn(items);
 
         // Act
 
-        List<Item> result = itemService.findByUser(user);
+        List<Item> result = itemService.findByUserAssign(user);
 
         // Assert
         assertNotNull(result);
@@ -141,10 +141,10 @@ class ItemImplTest {
         Item item1 = new Item(1L, "Leite", true, user);
         Item item2 = new Item(1L, "Banana", true, user);
         List<Item> items = List.of(item1,item2);
-        when(itemRepository.countItemsBoughtByUser(user)).thenReturn((long) items.size());
+        when(itemRepository.countItemsBoughtByUserAssign(user)).thenReturn((long) items.size());
 
         // Act
-        Long result = itemService.countItemsBoughtByUser(user);
+        Long result = itemService.countItemsBoughtByUserAssign(user);
 
         // Assert
         assertNotNull(result);
@@ -160,10 +160,10 @@ class ItemImplTest {
 
         List<Item> purchasedItems = List.of(item1, item2);
 
-        when(itemRepository.findByUserAnd_purchaseTrue(user)).thenReturn(purchasedItems);
+        when(itemRepository.findByUserAssignAndPurchaseTrue(user)).thenReturn(purchasedItems);
 
         // Act
-        List<ItemDTO> result = itemService.findByUserAnd_purchaseTrue(user);
+        List<ItemDTO> result = itemService.findByUserAssignAndPurchaseTrue(user);
 
         // Assert
         assertNotNull(result);

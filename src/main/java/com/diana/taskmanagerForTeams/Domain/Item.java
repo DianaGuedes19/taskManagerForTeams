@@ -8,20 +8,20 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private Boolean _purchase;
+    private Boolean purchase;
 
     @ManyToOne
     @JoinColumn(name = "assigned_user_id")
     private User userAssign;
 
 
-    public Item(Long id, String title, Boolean _purchase, User userAssign) {
+    public Item(Long id, String title, Boolean purchase, User userAssign) {
         this.id = id;
         if (isTitleInvalid(title)) throw new IllegalArgumentException("Invalid Title!");
         this.title = title;
 
-        if (_purchase == null) throw new IllegalArgumentException("User cannot be null!");
-        this._purchase = _purchase;
+        if (purchase == null) throw new IllegalArgumentException("User cannot be null!");
+        this.purchase = purchase;
 
         if (userAssign == null) throw new IllegalArgumentException("User cannot be null!");
         this.userAssign = userAssign;
@@ -53,12 +53,12 @@ public class Item {
         this.title = title;
     }
 
-    public Boolean get_purchase() {
-        return _purchase;
+    public Boolean getPurchase() {
+        return purchase;
     }
 
-    public void set_purchase(Boolean _purchase) {
-        this._purchase = _purchase;
+    public void setPurchase(Boolean purchase) {
+        this.purchase = purchase;
     }
 
     public User getUserAssign() {

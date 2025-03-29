@@ -55,13 +55,13 @@ class ItemTest {
         // act
         item.setId(10L);
         item.setTitle("Bananas");
-        item.set_purchase(true);
+        item.setPurchase(true);
         item.setUserAssign(mockUser);
 
         // assert
         assertEquals(10L, item.getId());
         assertEquals("Bananas", item.getTitle());
-        assertTrue(item.get_purchase());
+        assertTrue(item.getPurchase());
         assertEquals(mockUser, item.getUserAssign());
     }
 }

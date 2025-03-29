@@ -5,12 +5,13 @@ import com.diana.taskmanagerForTeams.Domain.Item;
 import com.diana.taskmanagerForTeams.Domain.User;
 import com.diana.taskmanagerForTeams.Mapper.ItemMapper;
 import com.diana.taskmanagerForTeams.Repository.ItemRepository;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class ItemImpl implements  ItemInterface{
 
 
@@ -40,7 +41,7 @@ public class ItemImpl implements  ItemInterface{
         Item item = itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found " + id));
         item.setId(itemDTO.getId());
         item.setTitle(itemDTO.getTitle());
-        item.set_purchase(itemDTO.get_purchase());
+        item.setPurchase(itemDTO.get_purchase());
         item.setUserAssign(itemDTO.getUserAssign());
 
         Item itemUpdated = itemRepository.save(item);
@@ -54,18 +55,18 @@ public class ItemImpl implements  ItemInterface{
     }
 
     @Override
-    public List<Item> findByUser(User user) {
-        return itemRepository.findByUser(user);
+    public List<Item> findByUserAssign(User user) {
+        return itemRepository.findByUserAssign(user);
     }
 
     @Override
-    public long countItemsBoughtByUser(User user) {
-       return itemRepository.countItemsBoughtByUser(user);
+    public long countItemsBoughtByUserAssign(User user) {
+       return itemRepository.countItemsBoughtByUserAssign(user);
     }
 
     @Override
-    public List<ItemDTO> findByUserAnd_purchaseTrue(User user) {
-        List<Item> items = itemRepository.findByUserAnd_purchaseTrue(user);
+    public List<ItemDTO> findByUserAssignAndPurchaseTrue(User user) {
+        List<Item> items = itemRepository.findByUserAssignAndPurchaseTrue(user);
         return items.stream()
                 .map(ItemMapper::mapToDTO)
                 .collect(Collectors.toList());

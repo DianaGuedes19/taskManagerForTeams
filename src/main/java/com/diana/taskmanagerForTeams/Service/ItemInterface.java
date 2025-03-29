@@ -11,7 +11,7 @@ public interface ItemInterface {
     List<ItemDTO> getAllPlayers ();
     ItemDTO updateItems (ItemDTO itemDTO, Long id);
     void deleteItem (Long id);
-    List<Item> findByUser (User user);
-    long countItemsBoughtByUser (User user);
-    List<ItemDTO> findByUserAnd_purchaseTrue(User user);
+    List<Item> findByUserAssign (User user);
+    long countItemsBoughtByUserAssign (User user);
+    List<ItemDTO> findByUserAssignAndPurchaseTrue(User user);
 }

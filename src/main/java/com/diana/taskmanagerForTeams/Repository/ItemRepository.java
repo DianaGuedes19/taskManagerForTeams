@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item,Long> {
-    List<Item> findByUser (User user);
-    long countItemsBoughtByUser (User user);
-    List<Item> findByUserAnd_purchaseTrue(User user);
+    List<Item> findByUserAssign (User user);
+    long countItemsBoughtByUserAssign (User user);
+    List<Item> findByUserAssignAndPurchaseTrue(User user);
 }
