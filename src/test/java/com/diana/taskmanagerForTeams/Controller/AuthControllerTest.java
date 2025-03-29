@@ -1,19 +1,28 @@
 package com.diana.taskmanagerForTeams.Controller;
 
+import com.diana.taskmanagerForTeams.DTO.AuthResponse;
 import com.diana.taskmanagerForTeams.DTO.ItemDTO;
+import com.diana.taskmanagerForTeams.DTO.LoginDTO;
 import com.diana.taskmanagerForTeams.DTO.UserDTO;
 import com.diana.taskmanagerForTeams.Domain.User;
+import com.diana.taskmanagerForTeams.Repository.UserRepository;
+import com.diana.taskmanagerForTeams.Security.JwtUtil;
 import com.diana.taskmanagerForTeams.Service.AuthImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -32,6 +41,7 @@ class AuthControllerTest {
 
     @MockBean
     private AuthImpl authService;
+
 
     @Test
     void shourRegisterAnUser() throws Exception {
@@ -60,5 +70,7 @@ class AuthControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value("DianaGuedes"));
     }
+
+
 
 }
