@@ -38,7 +38,7 @@ public class User {
     }
 
     public boolean isUserEmailInvalid (String email){
-        return email==null || email.isBlank() || email.isEmpty() || email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+        return email==null || email.isBlank() || email.isEmpty() || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
     }
 
     public  boolean isPasswordInvalid (String password){
