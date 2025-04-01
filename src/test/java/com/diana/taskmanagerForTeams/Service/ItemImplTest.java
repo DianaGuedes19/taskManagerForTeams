@@ -1,10 +1,12 @@
 package com.diana.taskmanagerForTeams.Service;
 
 import com.diana.taskmanagerForTeams.DTO.ItemDTO;
+import com.diana.taskmanagerForTeams.Domain.Enum.Role;
 import com.diana.taskmanagerForTeams.Domain.Item;
 import com.diana.taskmanagerForTeams.Domain.User;
 import com.diana.taskmanagerForTeams.Mapper.ItemMapper;
 import com.diana.taskmanagerForTeams.Repository.ItemRepository;
+import com.diana.taskmanagerForTeams.Repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -21,12 +23,13 @@ class ItemImplTest {
 
     @Mock
     ItemRepository itemRepository = spy(ItemRepository.class);
+    UserRepository userRepository = spy(UserRepository.class);
 
     private ItemImpl itemService;
 
     @BeforeEach
     void setup() {
-        itemService = new ItemImpl(itemRepository);
+        itemService = new ItemImpl(itemRepository,userRepository);
     }
 
     @Test
@@ -34,15 +37,22 @@ class ItemImplTest {
         // Arrange
 
         User user = new User();
+        user.setId(1L);
+        user.setUsername("Diana");
+        user.setEmail("diana@gmail.com");
+        user.setPassword("1234");
+        user.setRole(Role.ADMIN);
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+
         ItemDTO itemDTO = new ItemDTO();
         itemDTO.setTitle("Bananas");
-        itemDTO.set_purchase(true);
+        itemDTO.setPurchase(true);
         itemDTO.setUserAssign(user);
 
-        // First we convert from item to dto
+
         Item itemEntity = ItemMapper.mapToEntity(itemDTO);
 
-        // Then we use the behavior of save
         when(itemRepository.save(any(Item.class))).thenReturn(itemEntity);
 
         // Act
@@ -51,7 +61,7 @@ class ItemImplTest {
         // Assert
         assertNotNull(result);
         assertEquals("Bananas", result.getTitle());
-        assertTrue(result.get_purchase());
+        assertTrue(result.getPurchase());
     }
 
     @Test
@@ -65,7 +75,7 @@ class ItemImplTest {
         when(itemRepository.findAll()).thenReturn(items);
 
         // Act
-        List<ItemDTO> result = itemService.getAllPlayers();
+        List<ItemDTO> result = itemService.getAllItens();
 
         // Assert
         assertNotNull(result);
@@ -84,7 +94,7 @@ class ItemImplTest {
         ItemDTO itemDTO = new ItemDTO();
         itemDTO.setId(1L);
         itemDTO.setTitle("Banana");
-        itemDTO.set_purchase(true);
+        itemDTO.setPurchase(true);
         itemDTO.setUserAssign(user);
 
         Item newItem = new Item(1L, "Banana", true, user);

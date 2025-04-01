@@ -41,7 +41,6 @@ public class UserImpl implements UserInterface {
     @Override
     public UserDTO updateUser(UserDTO userDTO, Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found " + id));
-        user.setId(userDTO.getId());
         user.setUsername(userDTO.getUsername());
         user.setEmail(userDTO.getEmail());
         user.setRole(userDTO.getRole());

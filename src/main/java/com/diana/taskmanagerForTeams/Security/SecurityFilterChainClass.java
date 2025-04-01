@@ -20,6 +20,17 @@ public class SecurityFilterChainClass {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/user/getAllUsers").permitAll()
+                        .requestMatchers("/user/findByEmail").permitAll()
+                        .requestMatchers("/user/findByUsername").permitAll()
+                        .requestMatchers("/user/update/**").permitAll()
+                        .requestMatchers("/api/createItem").permitAll()
+                        .requestMatchers("/api/getAllItens").permitAll()
+                        .requestMatchers("/api/UpdateItens/**").permitAll()
+                        .requestMatchers("/api/deleteItem/**").permitAll()
+                        .requestMatchers("/api/findUserAssign").permitAll()
+                        .requestMatchers("/api/countItemBought").permitAll()
+                        .requestMatchers("/api/filterUserByPurchase").permitAll()
                         .anyRequest().authenticated()
                 );
 

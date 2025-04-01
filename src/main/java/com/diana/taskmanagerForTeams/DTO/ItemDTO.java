@@ -1,22 +1,19 @@
 package com.diana.taskmanagerForTeams.DTO;
 
 import com.diana.taskmanagerForTeams.Domain.User;
-import lombok.Getter;
-import lombok.Setter;
 
 
-@Getter
-@Setter
+
 public class ItemDTO {
     private Long id;
     private String title;
-    private Boolean _purchase;
+    private Boolean purchase;
     private User userAssign;
 
     public ItemDTO(Long id, String title, Boolean purchase, User userAssign) {
         this.id = id;
         this.title = title;
-        this._purchase = purchase;
+        this.purchase = purchase;
         this.userAssign = userAssign;
     }
 
@@ -41,12 +38,12 @@ public class ItemDTO {
         this.title = title;
     }
 
-    public Boolean get_purchase() {
-        return _purchase;
+    public Boolean getPurchase() {
+        return purchase;
     }
 
-    public void set_purchase(Boolean _purchase) {
-        this._purchase = _purchase;
+    public void setPurchase(Boolean purchase) {
+        this.purchase = purchase;
     }
 
     public User getUserAssign() {

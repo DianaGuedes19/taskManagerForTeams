@@ -11,7 +11,7 @@ public class ItemMapper {
         ItemDTO itemDTO = new ItemDTO();
         itemDTO.setId(item.getId());
         itemDTO.setTitle(item.getTitle());
-        itemDTO.set_purchase(item.getPurchase());
+        itemDTO.setPurchase(item.getPurchase());
         itemDTO.setUserAssign(item.getUserAssign());
         return itemDTO;
     }
@@ -20,7 +20,7 @@ public class ItemMapper {
         Item item = new Item();
         item.setId(taskDTO.getId());
         item.setTitle(taskDTO.getTitle());
-        item.setPurchase(taskDTO.get_purchase());
+        item.setPurchase(taskDTO.getPurchase());
         item.setUserAssign(taskDTO.getUserAssign());
         return item;
     }

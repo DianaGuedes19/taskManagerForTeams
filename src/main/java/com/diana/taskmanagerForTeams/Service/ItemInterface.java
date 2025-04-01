@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ItemInterface {
     ItemDTO createItem (ItemDTO itemDTO);
-    List<ItemDTO> getAllPlayers ();
+    List<ItemDTO> getAllItens ();
     ItemDTO updateItems (ItemDTO itemDTO, Long id);
     void deleteItem (Long id);
     List<Item> findByUserAssign (User user);

@@ -83,7 +83,6 @@ class UserImplTest {
         when(userRepository.findById(1L)).thenReturn(Optional.of(user1));
 
         UserDTO updateDTO = new UserDTO();
-        updateDTO.setId(userId);
         updateDTO.setUsername("DianaGuedes18");
         updateDTO.setEmail("dianaguedes@gmail.com");
         updateDTO.setRole(Role.ADMIN);

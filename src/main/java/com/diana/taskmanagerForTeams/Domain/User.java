@@ -34,7 +34,7 @@ public class User {
     }
 
     public boolean isUserNameInvalid (String username){
-        return username==null || username.isBlank() || username.isEmpty() || username.matches("^[A-Za-z ]+$");
+        return username==null || username.isBlank() || username.isEmpty();
     }
 
     public boolean isUserEmailInvalid (String email){
