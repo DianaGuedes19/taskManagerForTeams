@@ -8,12 +8,14 @@ import com.diana.taskmanagerForTeams.Mapper.UserMapper;
 import com.diana.taskmanagerForTeams.Repository.UserRepository;
 import com.diana.taskmanagerForTeams.Security.JwtUtil;
 import com.diana.taskmanagerForTeams.Security.SecurityConfig;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Service
 public class AuthImpl implements AuthInterface{
@@ -49,8 +51,10 @@ public class AuthImpl implements AuthInterface{
 
         // Creating a Spring User only to pass to JwtUtil and generate token . This is not save, only used here
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                user.getEmail(), user.getPassword(), new ArrayList<>());
-
+                user.getEmail(),
+                user.getPassword(),
+                Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()))
+        );
         // Generate JwtToken
         String token = jwtUtil.generateToken(userDetails);
 
